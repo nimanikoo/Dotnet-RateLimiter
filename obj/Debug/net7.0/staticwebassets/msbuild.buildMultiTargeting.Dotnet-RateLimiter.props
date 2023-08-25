@@ -1,0 +1,3 @@
+﻿<Project>
+  <Import Project="..\build\Dotnet-RateLimiter.props" />
+</Project>

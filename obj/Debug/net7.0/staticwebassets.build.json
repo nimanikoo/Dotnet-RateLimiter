@@ -1,0 +1,11 @@
+{
+  "Version": 1,
+  "Hash": "K9ewJgB2mLE4iUrqoESn6tEFEe10sdsklI4TEzJrk+Y=",
+  "Source": "Dotnet-RateLimiter",
+  "BasePath": "_content/Dotnet-RateLimiter",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [],
+  "Assets": []
+}
