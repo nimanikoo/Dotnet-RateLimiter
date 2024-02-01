@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Dotnet-RateLimiter")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+5e520e8bf2872ea95dcfcba1f71b5b70814f6226")]
 [assembly: System.Reflection.AssemblyProductAttribute("Dotnet-RateLimiter")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Dotnet-RateLimiter")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
