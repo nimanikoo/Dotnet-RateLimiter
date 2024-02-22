@@ -5,14 +5,12 @@
     <ImplicitUsings>enable</ImplicitUsings>
     <RootNamespace>Dotnet_RateLimiter</RootNamespace>
     <DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
+    <UserSecretsId>b607f824-0a3d-4738-90e4-48580378d2ef</UserSecretsId>
+    <DockerfileContext>.</DockerfileContext>
   </PropertyGroup>
   <ItemGroup>
+    <PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" Version="1.19.5" />
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.5.0" />
     <PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="8.0.2" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="..\.dockerignore">
-      <Link>.dockerignore</Link>
-    </Content>
   </ItemGroup>
 </Project>
