@@ -1,19 +1,72 @@
+
+
 # Dotnet-RateLimiter
-This is a rate limiter project implemented using .NET Core. The rate limiter helps control the number of requests made to an API or a resource within a specified time frame.
-In .NET Core, there are various types of rate limiters you can implement, depending on your specific requirements and the level of control you need over the rate limiting logic. Here are a few common types of rate limiters used in .NET Core:
 
-## **Fixed Window Rate Limiter:**
-This type of rate limiter allows a fixed number of requests within a specific time window. For example, you can enforce a rate limit of 100 requests per minute. Once the limit is reached, further requests are rejected until the window resets. This approach is simple to implement but can result in bursty behavior if requests are made in quick succession.
+[![GitHub](https://img.shields.io/badge/Repository-GitHub-blue)](https://github.com/nimanikoo/Dotnet-RateLimiter)
 
-## **Sliding Window Rate Limiter:**
-A sliding window rate limiter also enforces a fixed number of requests within a time window, but the window slides continuously rather than resetting at fixed intervals. For example, if you have a rate limit of 100 requests per minute, the sliding window rate limiter allows 100 requests in any rolling 60-second window. This approach provides a more evenly distributed rate limit and handles bursts of requests more effectively.
+**Dotnet-RateLimiter** is a .NET Core project designed to help control the rate of incoming requests to an API or resource. Implementing a rate limiter is crucial for preventing abuse, maintaining consistent performance, and ensuring fair usage of resources. This project showcases multiple types of rate limiting strategies, allowing you to choose the most suitable approach for your application’s needs.
 
-## **Token Bucket Rate Limiter:** 
-The token bucket algorithm is a popular approach for rate limiting. In this approach, clients are assigned a fixed number of tokens. Each request consumes a token, and requests can only be processed if tokens are available. Tokens are replenished at a certain rate over time. This allows for more flexible rate limiting scenarios where clients can burst requests up to a certain token limit. The "TokenBucket" algorithm is commonly used for token-based rate limiting.
+## Features
 
-## **Concurrency Rate Limiter:**
-A concurrency limiter controls the maximum number of simultaneous requests to a resource. If you set a limit of 10, for example, only the first 10 requests will be granted access to the resource at a given point of time. Whenever a request completes, it opens a slot for a new request.
+This project includes the following rate limiting strategies:
 
-## **Contributing:**
-Contributions are welcome! If you find any issues or have suggestions for improvements, please open an issue or submit a pull request.
-For any questions or inquiries, please contact **nikoonazar.nima@gmail.com**
+1. **Fixed Window Rate Limiter**  
+   A simple approach that limits the number of requests within a fixed time window. For example, with a limit of 100 requests per minute, all additional requests are blocked until the next minute starts. While easy to implement, this strategy may result in bursty behavior.
+
+2. **Sliding Window Rate Limiter**  
+   Similar to the fixed window approach, but with a continuously sliding window. This method ensures a more evenly distributed rate limit by allowing a rolling window of requests, reducing the impact of bursts.
+
+3. **Token Bucket Rate Limiter**  
+   A flexible rate limiter using the token bucket algorithm. Each request consumes a token, and tokens are replenished at a fixed rate over time. This approach is ideal for scenarios that require controlled bursts of requests, allowing clients to consume tokens quickly up to a defined limit.
+
+4. **Concurrency Rate Limiter**  
+   Controls the maximum number of simultaneous requests. For example, if the limit is set to 10, only 10 concurrent requests are allowed. As requests complete, new ones are allowed, maintaining the specified concurrency level.
+
+## Getting Started
+
+### Prerequisites
+
+- .NET Core SDK 7.0+
+- Visual Studio or any C# IDE
+
+### Installation
+
+1. Clone the repository:
+
+   ```bash
+   git clone https://github.com/nimanikoo/Dotnet-RateLimiter.git
+   cd dotnet-ratelimiter
+   ```
+
+2. Restore dependencies:
+
+   ```bash
+   dotnet restore
+   ```
+
+3. Run the project:
+
+   ```bash
+   dotnet run
+   ```
+
+### Usage
+
+The project includes example implementations of each rate limiting strategy. You can explore the code and configure the rate limits, window sizes, token replenishment rates, and concurrency limits to fit your specific needs.
+
+## Rate Limiting Strategies Explained
+
+- **Fixed Window:** Best for simple scenarios where burstiness isn’t a major concern.
+- **Sliding Window:** Provides more consistent rate enforcement, ideal for API endpoints with fluctuating traffic.
+- **Token Bucket:** Offers flexibility with burst control while still maintaining a steady rate over time.
+- **Concurrency Limiter:** Suitable when you need to limit simultaneous access to a resource, such as database connections or external API calls.
+
+## Contributing
+
+Contributions are welcome! Feel free to open issues or submit pull requests.
+
+## License
+
+This project is licensed under the MIT License. See the [LICENSE](./LICENSE) file for details.
+
+
