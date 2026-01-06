@@ -1,4 +1,4 @@
-namespace Dotnet_RateLimiter;
+namespace Dotnet_RateLimiter.Domain;
 
 public class WeatherForecast
 {
