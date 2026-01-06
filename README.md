@@ -26,7 +26,7 @@ This project includes the following rate limiting strategies:
 
 ### Prerequisites
 
-- .NET Core SDK 8.0+
+- .NET Core SDK 10.0+
 - Visual Studio / Rider or any C# IDE
 
 ### Installation
