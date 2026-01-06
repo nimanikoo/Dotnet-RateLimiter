@@ -11,7 +11,7 @@ public class RedisRateLimiter
         _db = connectionMultiplexer.GetDatabase();
     }
 
-    public async Task<bool> IsAllowedAsync(string key, int maxRequests, TimeSpan window)
+    public virtual async Task<bool> IsAllowedAsync(string key, int maxRequests, TimeSpan window)
     {
         var script = LuaScript.Prepare(@"
             local current = redis.call('INCR', @key)
