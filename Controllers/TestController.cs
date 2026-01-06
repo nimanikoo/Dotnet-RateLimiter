@@ -1,10 +1,12 @@
+using Dotnet_RateLimiter.Attributes;
+using Dotnet_RateLimiter.Domain;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.RateLimiting;
 
 namespace Dotnet_RateLimiter.Controllers;
 
 [ApiController, Route("[controller]")]
-public class WeatherForecastController : ControllerBase
+public class TestController : ControllerBase
 {
     private static readonly string[] Summaries =
     {
@@ -50,4 +52,11 @@ public class WeatherForecastController : ControllerBase
                 Summary = Summaries[Random.Shared.Next(Summaries.Length)]
             })
             .ToArray();
+    
+    [HttpGet("limited")]
+    [RedisRateLimit(maxRequests: 2, windowSeconds: 10)]
+    public IActionResult GetLimited() => Ok("This is a limited endpoint!");
+
+    [HttpGet("unlimited")]
+    public IActionResult GetUnlimited() => Ok("This is unlimited! Sky is the limit.");
 }
