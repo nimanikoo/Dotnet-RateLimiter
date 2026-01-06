@@ -1,12 +1,34 @@
 using System.Threading.RateLimiting;
+using Dotnet_RateLimiter.Services;
 using Microsoft.AspNetCore.RateLimiting;
+using StackExchange.Redis;
 
 namespace Dotnet_RateLimiter.Extensions;
 
 public static class RateLimiterExtensions
 {
-    public static IServiceCollection AddCustomRateLimiter(this IServiceCollection services)
+    public static IServiceCollection AddCustomRateLimiter(this IServiceCollection services,
+        IConfiguration configuration)
     {
+        var redisConnectionString = configuration.GetSection("Redis:ConnectionString").Value
+                                    ?? "localhost:6379";
+
+        var redis = ConnectionMultiplexer.Connect(redisConnectionString);
+        services.AddSingleton<IConnectionMultiplexer>(redis);
+        services.AddHealthChecks()
+            .AddRedis(
+                redisConnectionString: configuration.GetSection("Redis:ConnectionString").Value!,
+                name: "Redis Server",
+                tags: ["db", "cache", "redis"]
+            );
+        
+        services.AddHealthChecksUI(settings =>
+        {
+            settings.AddHealthCheckEndpoint("Main App", "http://localhost:8080/health"); 
+            settings.SetEvaluationTimeInSeconds(5);
+        }).AddInMemoryStorage(); 
+        
+        services.AddSingleton<RedisRateLimiter>();
         services.AddControllers();
         services.AddEndpointsApiExplorer();
         services.AddSwaggerGen();
